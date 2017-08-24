@@ -2,13 +2,14 @@
 
 class car {
     
-    car(make, model, miles, regno, complete, faults) {
+    car(make, model, miles, regno, complete, faults, checkedIn) {
         this.make = make;
         this.model = model;
         this.miles = miles;
         this.regno = regno;
         this.complete = complete;
         this.faults = faults;
+        this.checkedIn = checkedIn;
     }
     
 
@@ -21,6 +22,11 @@ class car {
         let res = this.miles*0.66;
         console.log(res);
         return res;
+    }
+
+    checkIn(){
+        this.checkedIn = true;
+        console.log(this.make + " " + this.model + " Checked In");        
     }
 }
 
@@ -105,8 +111,10 @@ function completeJob(){
 function theConsole(){
     let input = document.getElementById("gConsole").value;
     let cmd1 = "Create car ";
-    let cmd2 = "Output garage"
-    let cmd3 = "Check out"
+    let cmd2 = "Output garage";
+    let cmd3 = "Check out";
+    let cmd4 = "Check in";
+    
     
     if(input.substr(0,11) === cmd1){
         console.log("CREATE CAR");
@@ -117,7 +125,7 @@ function theConsole(){
         
         createCarConsole(partsOfStr[0], partsOfStr[1], partsOfStr[2], partsOfStr[3], faultStr);
         console.log(partsOfStr);
-        console.log(partsOfStr);
+        
     }
     else if(input.substr(0, 13) === cmd2){
         console.log("OUTPUT GARAGE");
@@ -130,8 +138,24 @@ function theConsole(){
         completeJob();
     
     }
+    else if(input.substr(0, 8) === cmd4){
+        console.log("CHECK IN CAR");
+        let str = input.substr(9, 200);
+        document.getElementById("inCRegno").value = str;
+        consoleCheckIn();
+    
+    }
     
 }
+function consoleCheckIn(){
+    let reg = document.getElementById("inCRegno").value;    
+    var x = cars.filter(a => {
+        return a.regno === reg;
+    });
+    console.log(x);
+    x[0].checkIn();
+}
+
 
 function displayJobs(){
     if(document.getElementById("jbid" || "jbid2" || "pid") !== null){
@@ -217,12 +241,10 @@ function createCar(){
     c.regno = document.getElementById("inRegno").value;
     c.complete = false;
     c.faults = document.getElementById("inFaults").value;
+    c.checkedIn = false;
     cars.push(c);
 }
 
-function checkIN(){
-    
-}
 
 function createCarConsole(make, model, miles, regno, faults){
     let c = new car();
@@ -232,6 +254,7 @@ function createCarConsole(make, model, miles, regno, faults){
     c.regno = regno;
     c.complete = false;
     c.faults = faults;
+    c.checkedIn = false;    
     cars.push(c);
 }
 
