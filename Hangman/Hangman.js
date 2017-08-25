@@ -51,6 +51,7 @@ function images(){
 function game(){
     document.getElementById("wordOutput").innerHTML = "";
     arrayLines = [];
+    document.getElementById("hangman").src="hangMan.png";
     document.getElementById("winOUT").innerHTML = ``;
 
     // let words = ["HELLO", "HOSPITAL", "DAVID", "HONDA"];
@@ -60,7 +61,7 @@ function game(){
 
     console.log(currentWord);
     underScores();
-    images();
+    
     noLives = 7;
 
     document.getElementById("liveOut").innerHTML = `Number of Lives remaining: ${noLives}`;
