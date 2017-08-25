@@ -60,6 +60,7 @@ function game(){
 
     console.log(currentWord);
     underScores();
+    images();
     noLives = 7;
 
     document.getElementById("liveOut").innerHTML = `Number of Lives remaining: ${noLives}`;
@@ -110,6 +111,7 @@ function checkLetter(char){
             for (let f=0; f<alpha.length; f++)
             document.getElementById(alpha[f]).disabled = true;
 
+            
             loseDiv.textContent = "Better luck next time ...";
             document.getElementById("winOUT").appendChild(loseDiv); 
             document.getElementById("liveOut").innerHTML = `GAME OVER`;
