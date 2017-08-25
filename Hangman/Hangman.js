@@ -6,7 +6,7 @@ let xhr = new XMLHttpRequest();
 // Setup on complete method
 xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        words = this.responseText.split("\n");
+        // words = this.responseText.split("\n");
     }
 };
 // open request
@@ -54,7 +54,7 @@ function game(){
     document.getElementById("hangman").src="hangMan.png";
     document.getElementById("winOUT").innerHTML = ``;
 
-    // let words = ["HELLO", "HOSPITAL", "DAVID", "HONDA"];
+    let words = ["HELLO", "HOSPITAL", "DAVID", "HONDA"];
     // let words = ["TEST"];
     let div = document.getElementById("wordOutput");
     currentWord = words[Math.floor(Math.random() * words.length)];
@@ -112,7 +112,10 @@ function checkLetter(char){
             for (let f=0; f<alpha.length; f++)
             document.getElementById(alpha[f]).disabled = true;
 
-            
+            // if(showButton.disabled === true){
+            //     document.getElementById("winOUT").innerHTML = `Congratulations, You are a Winner!`;            
+            // }
+
             loseDiv.textContent = "Better luck next time ...";
             document.getElementById("winOUT").appendChild(loseDiv); 
             document.getElementById("liveOut").innerHTML = `GAME OVER`;
