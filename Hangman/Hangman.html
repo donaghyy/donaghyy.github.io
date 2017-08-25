@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Carlos Alvarez, Theme designer & developer living in Madrid, Spain.">
+    <meta name="author" content="Carlos Alvarez">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <title>Hangman | Donaghyy</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+      #hangman {
+        height: 200px;
+        width: 200px;
+      }
+
+      #UnderLines {
+        color: black;
+        font-family: arial, sans-serif;
+        font-size: 40px;
+        font-weight: bold;
+        margin-top: 0px;
+        margin-bottom: 1px;
+      }
+
+      #winOUT {
+        color: black;
+        font-family: arial, sans-serif;
+        font-size: 29px;
+        
+        margin-top: 0px;
+        margin-bottom: 1px;
+      }
+      
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+    
+  </head>
+  <script src="Hangman.js"></script>
+  <body>
+
+
+    <div class="container">
+    	<div class="logo">
+	    	<img hidden="true" src="assets/img/logo.png" width="100" alt="BlackTie.co">
+    	</div>
+		<div class="row centered">
+			<div class="col-lg-8 col-lg-offset-2 w">
+				<h1><strong>Hangman</strong><br/></h1><h2 id="liveOut">By David Donaghy</h2>
+			</div>
+		</div>
+		<div class="row centered">
+			<div id="HangMan" class="col-lg-8 col-lg-offset-2 w tooltip-demo">
+        <img id="hangman" src="hangMan.png">
+        
+			</div>
+		</div>
+    </div><!-- /.container -->
+    
+    <div class="container">
+    	<div class="row w centered">
+    		<br>		
+    		<div id="mainDiv" class="col-lg-6 col-lg-offset-3">
+          <!-- <p>HANGMAN</p> -->
+          <div id="buttons">
+          <button onclick="checkLetter('a'); document.getElementById('a').disabled=true;" id="a">a</button><button onclick="checkLetter('b'); document.getElementById('b').disabled=true;" id="b">b</button><button onclick="checkLetter('c'); document.getElementById('c').disabled=true;" id="c">c</button><button onclick="checkLetter('d'); document.getElementById('d').disabled=true;" id="d">d</button><button onclick="checkLetter('e'); document.getElementById('e').disabled=true;" id="e">e</button>
+          <button onclick="checkLetter('f'); document.getElementById('f').disabled=true;" id="f">f</button><button onclick="checkLetter('g'); document.getElementById('g').disabled=true;" id="g">g</button><button onclick="checkLetter('h'); document.getElementById('h').disabled=true;" id="h">h</button><button onclick="checkLetter('i'); document.getElementById('i').disabled=true;" id="i">i</button><button onclick="checkLetter('j'); document.getElementById('j').disabled=true;" id="j">j</button>
+          <button onclick="checkLetter('k'); document.getElementById('k').disabled=true;" id="k">k</button><button onclick="checkLetter('l'); document.getElementById('l').disabled=true;" id="l">l</button><button onclick="checkLetter('m'); document.getElementById('m').disabled=true;" id="m">m</button><button onclick="checkLetter('n'); document.getElementById('n').disabled=true;" id="n">n</button><button onclick="checkLetter('o'); document.getElementById('o').disabled=true;" id="o">o</button>
+          <button onclick="checkLetter('p'); document.getElementById('p').disabled=true;" id="p">p</button><button onclick="checkLetter('q'); document.getElementById('q').disabled=true;" id="q">q</button><button onclick="checkLetter('r'); document.getElementById('r').disabled=true;" id="r">r</button><button onclick="checkLetter('s'); document.getElementById('s').disabled=true;" id="s">s</button><button onclick="checkLetter('t'); document.getElementById('t').disabled=true;" id="t">t</button>
+          <button onclick="checkLetter('u'); document.getElementById('u').disabled=true;" id="u">u</button><button onclick="checkLetter('v'); document.getElementById('v').disabled=true;" id="v">v</button><button onclick="checkLetter('w'); document.getElementById('w').disabled=true;" id="w">w</button><button onclick="checkLetter('x'); document.getElementById('x').disabled=true;" id="x">x</button><button onclick="checkLetter('y'); document.getElementById('y').disabled=true;" id="y">y</button>
+          <button onclick="checkLetter('z'); document.getElementById('z').disabled=true;" id="z">z</button> <br><br> <button onclick="game()" id="start">New Word</button><button onclick="showWord(); document.getElementById('showWord').disabled=true;" id="showWord">Show Word</button>
+          </div>
+          <br><br>
+          
+          <div id="wordOutput">
+            <!-- <h1>_ _ _ _ _ _ _ _ _</h1> -->
+
+          </div>
+          <div id="marquee"><marquee scrollamount='20' direction='left' behaviour='alternate'>   <div id="winOUT"></div></marquee>   </div>
+          
+
+    		</div>
+    	</div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <script>
+    $('.tooltip-demo').tooltip({
+      selector: "[data-toggle=tooltip]",
+      container: "body"
+    })
+	</script>
+
+
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+    <script>
+        $.backstretch("assets/img/bg.jpg", {speed: 500});
+    </script>
+
+  </body>
+</html>
