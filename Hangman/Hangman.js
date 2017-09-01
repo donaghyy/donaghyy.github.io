@@ -1,20 +1,42 @@
 
 let url = "https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt";
 var words = [];
-// Create request
-let xhr = new XMLHttpRequest();
-// Setup on complete method
-xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        // words = this.responseText.split("\n");
-    }
-};
-// open request
-xhr.open('GET', url, true);
-// send requests
-xhr.send();
 
+// // Create request
+// let xhr = new XMLHttpRequest();
 
+// // Setup on complete method
+// xhr.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+//         words = this.responseText.split("\n");
+//     }
+// };
+// // open request
+// xhr.open('GET', url, true);
+// // send requests
+// xhr.send();
+
+function promiseRequest(url) { 
+    return new Promise((resolve) => {
+        var req = new XMLHttpRequest();
+        req.open('GET', url);
+        req.responseType = "text";
+        req.send();
+
+         req.onload = (() => {
+           if (req.readyState == 4 && req.status == 200) {
+                words = req.response.split("\n");
+               resolve(words);
+             }
+        })
+    })
+  }
+
+  function doPromise(){
+      promiseRequest("https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt").then((words) => {
+          console.log("JSON Wordlist loaded.")
+      })
+  }
 
 
 var noLives;
@@ -49,12 +71,13 @@ function images(){
 }
 
 function game(){
+    // doPromise();
     document.getElementById("wordOutput").innerHTML = "";
     arrayLines = [];
     document.getElementById("hangman").src="hangMan.png";
     document.getElementById("winOUT").innerHTML = ``;
 
-    let words = ["HELLO", "HOSPITAL", "DAVID", "HONDA"];
+    // let words = ["HELLO", "HOSPITAL", "DAVID", "HONDA"];
     // let words = ["TEST"];
     let div = document.getElementById("wordOutput");
     currentWord = words[Math.floor(Math.random() * words.length)];
